@@ -23,3 +23,6 @@ artifacts:
     - scripts/stop.sh
     - appspec.yml
   discard-paths: yes # 디렉토리를 무시하고 하나의 디렉토리에 위 파일을 이동.
+cache:
+  paths:
+    - '/root/.m2/**/*'
