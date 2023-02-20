@@ -13,7 +13,7 @@ spec:
         app: hnginx
     spec:
       containers:
-        - image: oolralra/sbimage:5
+        - image: oolralra/sbimage:9
           name: hnginx
 ---
 apiVersion: v1
