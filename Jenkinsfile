@@ -95,26 +95,6 @@ pipeline {
         }
       }
     }
-    stage('K8S Manifest Update') {
-      steps {
-        // git 계정 로그인, 해당 레포지토리의 main 브랜치에서 클론
-        git credentialsId: githubCredential,
-            url: 'https://github.com/pcmin929/sb_code.git',
-            branch: 'main'  
-
-        // 이미지 태그 변경 후 메인 브랜치에 푸시
-        sh "git config --global user.email ${gitEmail}"
-        sh "git config --global user.name ${gitName}"
-        sh "sed -i 's/sbimage:.*/sbimage:${currentBuild.number}/g' deploy/deploy.yml"
-        sh "git add ."
-        sh "git commit -m 'fix:${dockerHubRegistry} ${currentBuild.number} image versioning'"
-        sh "git branch -M main"
-        sh "git remote remove origin"
-        sh "git remote add origin git@github.com:pcmin929/sb_code.git"
-        sh "git push -u origin main"
-        
-          
-      }
-    }  
+      
   }
 }
