@@ -24,7 +24,7 @@ spec:
   ports:
     - port: 80
       protocol: TCP
-      targetPort: 80
+      targetPort: 8085
   selector:
     app: hnginx
   type: LoadBalancer
