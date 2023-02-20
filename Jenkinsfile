@@ -4,12 +4,24 @@ pipeline {
   tools {
     maven 'my_maven'
   }
+  environment {
+    gitName = 'pcmin929'
+    gitEmail = 'pcmin929@gmail.com'
+    githubCredential = 'git_cre'
+  }
   stages {
-    stage('Example') {
+    stage('Checkout Github') {
       steps {
-        echo 'Hello World'
+          checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: githubCredential, 'https://github.com/pcmin929/simple_sb.git']]])
+          }
+      post {
+        failure {
+          echo 'Repository clone failure'
         }
+        success {
+          echo 'Repository clone success'  
+        }
+      }
     }
   }
 }
-
