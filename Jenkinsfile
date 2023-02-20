@@ -8,6 +8,7 @@ pipeline {
     gitName = 'pcmin929'
     gitEmail = 'pcmin929@gmail.com'
     githubCredential = 'git_cre'
+    dockerHubRegistry = 'oolralra/sbimage'
   }
   stages {
     stage('Checkout Github') {
@@ -33,7 +34,21 @@ pipeline {
           echo 'Maven jar build failure'
         }
         success {
-          echo 'Repository clone success'  
+          echo 'Maven jar build success'  
+        }
+      }
+    }
+    stage('Docker Image Build') {
+      steps {
+          sh "docker build -t ${dockerHubRegistry}:${currentBuild.number} ."
+          sh "docker build -t ${dockerHubRegistry}:latest ."
+          }
+      post {
+        failure {
+          echo 'Docker image build failure'
+        }
+        success {
+          echo 'Docker image build success'  
         }
       }
     }
