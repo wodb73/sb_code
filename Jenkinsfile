@@ -12,7 +12,7 @@ pipeline {
   stages {
     stage('Checkout Github') {
       steps {
-          checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: githubCredential, url: 'https://github.com/pcmin929/simple_sb.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: githubCredential, url: 'https://github.com/pcmin929/sb_code.git']]])
           }
       post {
         failure {
