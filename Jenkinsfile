@@ -9,7 +9,7 @@ pipeline {
     gitName = 'wodb777'
     gitEmail = 'wodb777@gmail.com'
     githubCredential = 'git_cre'
-    dockerHubRegistry = 'wodb777/sbimage'
+    dockerHubRegistry = 'wodb73/sbimage'
     dockerHubRegistryCredential = 'docker_cre'
   }
   stages {
